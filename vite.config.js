@@ -14,10 +14,4 @@ export default defineConfig({
       'firebase/auth': 'firebase/auth',
     },
   },
-  esbuild: {
-    target: 'esnext',
-    platform: 'linux',
-  }
 })
-
-
