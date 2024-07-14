@@ -62,33 +62,33 @@ const App = () => {
         setLoading(false);
       })
       .catch((err) => {
+        toast.error("OTP Incorrect!");
         console.log(err);
         setLoading(false);
       });
   }
 
   return (
-    <section className="bg-emerald-500 flex items-center justify-center h-screen">
+    <section>
       <div>
         <Toaster toastOptions={{ duration: 4000 }} />
         <div id="recaptcha-container"></div>
         {user ? (
-          <h2 className="text-center text-white font-medium text-2xl">
+          <h2>
             👍Login Success
           </h2>
         ) : (
-          <div className="w-80 flex flex-col gap-4 rounded-lg p-4">
-            <h1 className="text-center leading-normal text-white font-medium text-3xl mb-6">
+          <div>
+            <h1 className="title">
               Welcome to <br /> CODE A PROGRAM
             </h1>
             {showOTP ? (
               <>
-                <div className="bg-white text-emerald-500 w-fit mx-auto p-4 rounded-full">
+                <div>
                   <BsFillShieldLockFill size={30} />
                 </div>
                 <label
-                  htmlFor="otp"
-                  className="font-bold text-xl text-white text-center"
+                  htmlFor="otp" className="title title-verify"
                 >
                   Enter your OTP
                 </label>
@@ -99,37 +99,36 @@ const App = () => {
                   otpType="number"
                   disabled={false}
                   autoFocus
-                  className="opt-container "
                 ></OtpInput>
                 <button
                   onClick={onOTPVerify}
-                  className="bg-emerald-600 w-full flex gap-1 items-center justify-center py-2.5 text-white rounded"
+                  className="button-85"
                 >
-                  {loading && (
-                    <CgSpinner size={20} className="mt-1 animate-spin" />
-                  )}
-                  <span>Verify OTP</span>
+                  {/* {loading && (
+                    <CgSpinner size={20} />
+                  )} */}
+                  <span >Verify OTP</span>
                 </button>
               </>
             ) : (
               <>
-                <div className="bg-white text-emerald-500 w-fit mx-auto p-4 rounded-full">
+                <div>
                   <BsTelephoneFill size={30} />
                 </div>
                 <label
                   htmlFor=""
-                  className="font-bold text-xl text-white text-center"
+                  className="title title-verify"
                 >
                   Verify your phone number
                 </label>
                 <PhoneInput country={"vn"} value={phone} onChange={setPhone} />
                 <button
                   onClick={onSignup}
-                  className="bg-emerald-600 w-full flex gap-1 items-center justify-center py-2.5 text-white rounded"
+                  className="button-85"
                 >
-                  {loading && (
-                    <CgSpinner size={20} className="mt-1 animate-spin" />
-                  )}
+                  {/* {loading && (
+                    <CgSpinner size={20} />
+                  )} */}
                   <span>Send code via SMS</span>
                 </button>
               </>
